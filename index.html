@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jadwal Pelajaran</title>
+<link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-6.5.2-web/css/all.min.css">
+<link rel="stylesheet" href="https://bulma.io/assets/css/website.min.css?v=202407251459">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+<style>
+html {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+scroll-behavior: smooth;
+}
+.field {
+display: flex;
+align-items: center;
+margin-bottom: 1rem;
+}
+#current-time {
+margin-right: 1rem;
+font-size: 1.2rem;
+color: #4a4a4a;
+}
+.select {
+margin-left: auto;
+}
+</style>
+</head>
+<body>
+<header class="bd-header">
+<a class="bulma-logo" href="https://bulma.io/">Jadwal Pelajaran</a>
+<nav id="js-nav" class="navbar-end">
+<div class="bd-nav-themes">
+<button id="js-cycle" class="bd-cycle js-burger is-sun" data-target="js-themes">
+<div class="bd-cycles">
+<div class="bd-cycle-sun">
+<span class="icon">
+<i class="fas fa-lg fa-sun" aria-hidden="true"></i>
+</span>
+</div>
+<div class="bd-cycle-moon">
+<span class="icon">
+<i class="fas fa-lg fa-moon" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</button>
+<div id="js-themes" class="bd-nav-menu is-cycles js-menu js-themes">
+<button data-scheme="light" class="bd-nav-item is-sun" aria-label="Light mode">
+<span class="icon"><i class="fas fa-sun" aria-hidden="true"></i></span>
+<span>Light</span>
+</button>
+<button data-scheme="dark" class="bd-nav-item is-moon" aria-label="Dark mode">
+<span class="icon"><i class="fas fa-moon" aria-hidden="true"></i></span>
+<span>Dark</span>
+</button>
+<button data-scheme="system" class="bd-nav-item is-system" aria-label="System mode">
+<span class="icon"><i class="fas fa-desktop" aria-hidden="true"></i></span>
+<span>System</span>
+</button>
+</div>
+</div>
+</nav>
+</header>
+<section class="section is-medium">
+<div class="field">
+<p id="current-time">00:00 - 00 00 0000</p>
+<div class="control select">
+<div class="select">
+<select id="day-select" onchange="onDayChange()">
+<option value="senin">Senin</option>
+<option value="selasa">Selasa</option>
+<option value="rabu">Rabu</option>
+<option value="kamis">Kamis</option>
+<option value="jumat">Jum'at</option>
+</select>
+</div>
+</div>
+</div>
+<div class="card" id="schedule-card">
+<header class="card-header">
+<p id="schedule-title" class="card-header-title">Senin</p>
+</header>
+<div class="card-content">
+<div id="schedule-content" class="content">
+</div>
+</div>
+</div>
+</section>
+<script>
+function getSchedule(day) {
+switch(day) {
+case 'senin':
+return [
+{ start: "07:45", end: "08:25", subject: "PPKN" },
+{ start: "08:25", end: "09:05", subject: "PPKN" },
+{ start: "09:05", end: "09:45", subject: "BAHASA INDONESIA" },
+{ start: "09:45", end: "10:25", subject: "BAHASA INDONESIA" },
+{ start: "10:25", end: "10:40", subject: "ISTIRAHAT" },
+{ start: "10:40", end: "11:20", subject: "MATEMATIKA (W)" },
+{ start: "11:20", end: "12:00", subject: "MATEMATIKA (W)" },
+{ start: "12:00", end: "12:30", subject: "ISTIRAHAT" },
+{ start: "12:30", end: "13:10", subject: "PRAKARYA (YL)" },
+{ start: "13:10", end: "13:50", subject: "BIOLOGI (LM)" },
+{ start: "13:50", end: "14:30", subject: "BIOLOGI (LM)" },
+{ start: "14:30", end: "15:10", subject: "GEOGRAFI (P)" },
+{ start: "15:10", end: "15:50", subject: "GEOGRAFI (P)" }
+];
+case 'selasa':
+return [
+{ start: "07:15", end: "07:55", subject: "EKONOMI (P)" },
+{ start: "07:55", end: "08:35", subject: "EKONOMI (P)" },
+{ start: "08:35", end: "09:15", subject: "BAHASA INDONESIA" },
+{ start: "09:15", end: "09:55", subject: "BAHASA INDONESIA" },
+{ start: "09:55", end: "10:10", subject: "ISTIRAHAT" },
+{ start: "10:10", end: "10:50", subject: "MATEMATIKA (W)" },
+{ start: "10:50", end: "11:30", subject: "MATEMATIKA (W)" },
+{ start: "11:30", end: "12:10", subject: "SEJARAH INDONESIA" },
+{ start: "12:10", end: "12:40", subject: "ISTIRAHAT" },
+{ start: "12:40", end: "13:20", subject: "SEJARAH INDONESIA" },
+{ start: "13:20", end: "14:00", subject: "PRAKARYA" },
+{ start: "14:00", end: "14:40", subject: "AQIDAH AKHLAK" },
+{ start: "14:40", end: "15:20", subject: "AQIDAH AKHLAK" }
+];
+case 'rabu':
+return [
+{ start: "07:15", end: "07:55", subject: "SOSIOLOGI (P)" },
+{ start: "07:55", end: "08:35", subject: "SOSIOLOGI (P)" },
+{ start: "08:35", end: "09:15", subject: "EKONOMI (P)" },
+{ start: "09:15", end: "09:55", subject: "EKONOMI (P)" },
+{ start: "09:55", end: "10:10", subject: "ISTIRAHAT" },
+{ start: "10:10", end: "10:50", subject: "FIQIH (AP)" },
+{ start: "10:50", end: "11:30", subject: "FIQIH (AP)" },
+{ start: "11:30", end: "12:10", subject: "SEJARAH (P) (AR)" },
+{ start: "12:10", end: "12:40", subject: "ISTIRAHAT" },
+{ start: "12:40", end: "13:20", subject: "SEJARAH (P)" },
+{ start: "13:20", end: "14:00", subject: "SENI BUDAYA" },
+{ start: "14:00", end: "14:40", subject: "BIOLOGI (LM)" },
+{ start: "14:40", end: "15:20", subject: "BIOLOGI (LM)" }
+];
+case 'kamis':
+return [
+{ start: "07:30", end: "08:10", subject: "SOSIOLOGI (P)" },
+{ start: "08:10", end: "08:50", subject: "SOSIOLOGI (P)" },
+{ start: "08:50", end: "09:30", subject: "BAHASA ARAB" },
+{ start: "09:30", end: "10:10", subject: "BAHASA ARAB" },
+{ start: "10:10", end: "10:25", subject: "ISTIRAHAT" },
+{ start: "10:25", end: "11:05", subject: "MATEMATIKA (W)" },
+{ start: "11:05", end: "11:45", subject: "MATEMATIKA (W)" },
+{ start: "11:45", end: "12:25", subject: "SEJARAH INDONESIA" },
+{ start: "12:25", end: "12:55", subject: "ISTIRAHAT" },
+{ start: "12:55", end: "13:35", subject: "SENI BUDAYA" },
+{ start: "13:35", end: "14:15", subject: "BAHASA ARAB" },
+{ start: "14:15", end: "14:55", subject: "BAHASA ARAB" },
+{ start: "14:55", end: "15:35", subject: "SEJARAH INDONESIA" }
+];
+case 'jumat':
+return [
+{ start: "07:30", end: "08:10", subject: "BIOLOGI (LM)" },
+{ start: "08:10", end: "08:50", subject: "BIOLOGI (LM)" },
+{ start: "08:50", end: "09:30", subject: "SENI BUDAYA" },
+{ start: "09:30", end: "10:10", subject: "SENI BUDAYA" },
+{ start: "10:10", end: "10:25", subject: "ISTIRAHAT" },
+{ start: "10:25", end: "11:05", subject: "MATEMATIKA (W)" },
+{ start: "11:05", end: "11:45", subject: "MATEMATIKA (W)" },
+{ start: "11:45", end: "12:25", subject: "BAHASA INDONESIA" },
+{ start: "12:25", end: "12:55", subject: "ISTIRAHAT" },
+{ start: "12:55", end: "13:35", subject: "SEJARAH (P)" },
+{ start: "13:35", end: "14:15", subject: "SEJARAH (P)" }
+];
+default:
+return [];
+}
+}
+function updateCurrentTime() {
+const now = new Date();
+const formattedTime = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+const formattedDate = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+document.getElementById('current-time').textContent = `${formattedTime} - ${formattedDate}`;
+}
+
+function autoUpdateSchedule() {
+const selectedDay = document.getElementById("day-select").value;
+const currentTime = new Date();
+const timeString = currentTime.toTimeString().split(' ')[0].substring(0, 5); 
+const schedule = getSchedule(selectedDay);
+let scheduleHtml = "<ul>";
+let hasUpcoming = false;
+schedule.forEach(item => {
+if (item.start > timeString) {
+scheduleHtml += `<li class="current">${item.start} - ${item.end}: ${item.subject}</li>`;
+hasUpcoming = true;
+return; 
+}
+});
+if (!hasUpcoming) {
+scheduleHtml += `<li>Sekolah Telah Berhakhir, Ayo Pulang!</li>`;
+}
+scheduleHtml += "</ul>";
+document.getElementById("schedule-content").innerHTML = scheduleHtml;
+}
+function onDayChange() {
+const selectedDay = document.getElementById("day-select").value;
+const cardTitle = document.getElementById("schedule-title");
+cardTitle.innerText = selectedDay.charAt(0).toUpperCase() + selectedDay.slice(1);
+autoUpdateSchedule();
+}
+function setDefaultDay() {
+const now = new Date();
+const days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+const dayIndex = now.getDay() === 0 ? 4 : (now.getDay() - 1); 
+document.getElementById('day-select').value = days[dayIndex];
+onDayChange();
+}
+setInterval(updateCurrentTime, 1000);
+setDefaultDay();
+</script>
+<script src="https://bulma.io/assets/javascript/main.js"></script>
+<script type="text/javascript" src="https://bulma.io/assets/javascript/docs.js"></script>
+<script src="https://bulma.io/assets/vendor/native.js"></script>
+</body>
+</html>
