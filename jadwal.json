@@ -1,0 +1,77 @@
+{
+  "XII-IPS": {
+    "senin": [
+      { "start": "07:45", "end": "08:25", "subject": "PPKN", "teacher": "TW" },
+      { "start": "08:25", "end": "09:05", "subject": "PPKN", "teacher": "TW" },
+      { "start": "09:05", "end": "09:45", "subject": "BAHASA INDONESIA", "teacher": "DS" },
+      { "start": "09:45", "end": "10:25", "subject": "BAHASA INDONESIA", "teacher": "DS" },
+      { "start": "10:25", "end": "10:40", "subject": "ISTIRAHAT" },
+      { "start": "10:40", "end": "11:20", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "11:20", "end": "12:00", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "12:00", "end": "12:30", "subject": "ISTIRAHAT" },
+      { "start": "12:30", "end": "13:10", "subject": "PRAKARYA", "teacher": "YL" },
+      { "start": "13:10", "end": "13:50", "subject": "BIOLOGI (LM)", "teacher": "FA" },
+      { "start": "13:50", "end": "14:30", "subject": "BIOLOGI (LM)", "teacher": "FA" },
+      { "start": "14:30", "end": "15:10", "subject": "GEOGRAFI (P)", "teacher": "RM" },
+      { "start": "15:10", "end": "15:50", "subject": "GEOGRAFI (P)", "teacher": "RM" }
+    ],
+    "selasa": [
+      { "start": "07:15", "end": "07:55", "subject": "EKONOMI (P)", "teacher": "AG" },
+      { "start": "07:55", "end": "08:35", "subject": "EKONOMI (P)", "teacher": "AG" },
+      { "start": "08:35", "end": "09:15", "subject": "BAHASA INDONESIA", "teacher": "DS" },
+      { "start": "09:15", "end": "09:55", "subject": "BAHASA INDONESIA", "teacher": "DS" },
+      { "start": "09:55", "end": "10:10", "subject": "ISTIRAHAT" },
+      { "start": "10:10", "end": "10:50", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "10:50", "end": "11:30", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "11:30", "end": "12:10", "subject": "SEJARAH INDONESIA", "teacher": "TW" },
+      { "start": "12:10", "end": "12:40", "subject": "ISTIRAHAT" },
+      { "start": "12:40", "end": "13:20", "subject": "SEJARAH INDONESIA", "teacher": "TW" },
+      { "start": "13:20", "end": "14:00", "subject": "PRAKARYA", "teacher": "YL" },
+      { "start": "14:00", "end": "14:40", "subject": "AQIDAH AKHLAK", "teacher": "IY" },
+      { "start": "14:40", "end": "15:20", "subject": "AQIDAH AKHLAK", "teacher": "IY" }
+    ],
+    "rabu": [
+      { "start": "07:15", "end": "07:55", "subject": "SOSIOLOGI (P)", "teacher": "FR" },
+      { "start": "07:55", "end": "08:35", "subject": "SOSIOLOGI (P)", "teacher": "FR" },
+      { "start": "08:35", "end": "09:15", "subject": "EKONOMI (P)", "teacher": "AG" },
+      { "start": "09:15", "end": "09:55", "subject": "EKONOMI (P)", "teacher": "AG" },
+      { "start": "09:55", "end": "10:10", "subject": "ISTIRAHAT" },
+      { "start": "10:10", "end": "10:50", "subject": "FIQIH", "teacher": "AP" },
+      { "start": "10:50", "end": "11:30", "subject": "FIQIH", "teacher": "AP" },
+      { "start": "11:30", "end": "12:10", "subject": "SEJARAH (P)", "teacher": "AR" },
+      { "start": "12:10", "end": "12:40", "subject": "ISTIRAHAT" },
+      { "start": "12:40", "end": "13:20", "subject": "SEJARAH (P)", "teacher": "AR" },
+      { "start": "13:20", "end": "14:00", "subject": "SENI BUDAYA", "teacher": "YL" },
+      { "start": "14:00", "end": "14:40", "subject": "BIOLOGI (LM)", "teacher": "FA" },
+      { "start": "14:40", "end": "15:20", "subject": "BIOLOGI (LM)", "teacher": "FA" }
+    ],
+    "kamis": [
+      { "start": "07:30", "end": "08:10", "subject": "SOSIOLOGI (P)", "teacher": "FR" },
+      { "start": "08:10", "end": "08:50", "subject": "SOSIOLOGI (P)", "teacher": "FR" },
+      { "start": "08:50", "end": "09:30", "subject": "AL-QUR'AN HADIST", "teacher": "IY" },
+      { "start": "09:30", "end": "10:10", "subject": "AL-QUR'AN HADIST", "teacher": "IY" },
+      { "start": "10:10", "end": "10:25", "subject": "ISTIRAHAT" },
+      { "start": "10:25", "end": "11:05", "subject": "SEJARAH (P)", "teacher": "AR" },
+      { "start": "11:05", "end": "11:45", "subject": "SEJARAH (P)", "teacher": "AR" },
+      { "start": "11:45", "end": "12:25", "subject": "BAHASA ARAB", "teacher": "NS" },
+      { "start": "12:25", "end": "13:05", "subject": "ISTIRAHAT" },
+      { "start": "13:05", "end": "13:45", "subject": "BAHASA ARAB", "teacher": "NS" },
+      { "start": "13:45", "end": "14:25", "subject": "GEOGRAFI (P)", "teacher": "RM" },
+      { "start": "14:25", "end": "15:05", "subject": "GEOGRAFI (P)", "teacher": "RM" },
+      { "start": "15:05", "end": "15:45", "subject": "SENI BUDAYA", "teacher": "YL" }
+    ],
+    "jumat": [
+      { "start": "07:30", "end": "08:10", "subject": "BIOLOGI (LM)", "teacher": "FA" },
+      { "start": "08:10", "end": "08:50", "subject": "BIOLOGI (LM)", "teacher": "FA" },
+      { "start": "08:50", "end": "09:30", "subject": "SENI BUDAYA", "teacher": "YL" },
+      { "start": "09:30", "end": "10:10", "subject": "SENI BUDAYA", "teacher": "YL" },
+      { "start": "10:10", "end": "10:25", "subject": "ISTIRAHAT" },
+      { "start": "10:25", "end": "11:05", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "11:05", "end": "11:45", "subject": "MATEMATIKA (W)", "teacher": "IS" },
+      { "start": "11:45", "end": "12:25", "subject": "BAHASA INDONESIA", "teacher": "DS" },
+      { "start": "12:25", "end": "12:55", "subject": "ISTIRAHAT" },
+      { "start": "12:55", "end": "13:35", "subject": "SEJARAH (P)", "teacher": "AR" },
+      { "start": "13:35", "end": "14:15", "subject": "SEJARAH (P)", "teacher": "AR" }
+    ]
+  }
+}
