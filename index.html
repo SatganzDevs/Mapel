@@ -23,6 +23,14 @@ html {
   margin-right: 1rem;
   font-size: 1.2rem;
   color: #4a4a4a;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.5rem; /* Sesuaikan dengan ukuran font */
+}
+.time-unit {
+  display: block;
+  animation: none;
 }
 .select {
   margin-left: auto;
@@ -36,6 +44,16 @@ html {
   animation: blink 1s infinite;
   color: #3273dc;
 }
+@keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes blink {
   50% {
     opacity: 0.5;
@@ -44,44 +62,12 @@ html {
 </style>
 </head>
 <body>
-<header class="bd-header">
-<a class="bulma-logo" href="https://bulma.io/">Jadwal Pelajaran</a>
-<nav id="js-nav" class="navbar-end">
-<div class="bd-nav-themes">
-<button id="js-cycle" class="bd-cycle js-burger is-sun" data-target="js-themes">
-<div class="bd-cycles">
-<div class="bd-cycle-sun">
-<span class="icon">
-<i class="fas fa-lg fa-sun" aria-hidden="true"></i>
-</span>
-</div>
-<div class="bd-cycle-moon">
-<span class="icon">
-<i class="fas fa-lg fa-moon" aria-hidden="true"></i>
-</span>
-</div>
-</div>
-</button>
-<div id="js-themes" class="bd-nav-menu is-cycles js-menu js-themes">
-<button data-scheme="light" class="bd-nav-item is-sun" aria-label="Light mode">
-<span class="icon"><i class="fas fa-sun" aria-hidden="true"></i></span>
-<span>Light</span>
-</button>
-<button data-scheme="dark" class="bd-nav-item is-moon" aria-label="Dark mode">
-<span class="icon"><i class="fas fa-moon" aria-hidden="true"></i></span>
-<span>Dark</span>
-</button>
-<button data-scheme="system" class="bd-nav-item is-system" aria-label="System mode">
-<span class="icon"><i class="fas fa-desktop" aria-hidden="true"></i></span>
-<span>System</span>
-</button>
-</div>
-</div>
-</nav>
-</header>
 <section class="section is-medium">
+<p class="has-text-light" id="current-date">00 00 0000</p>
+<p class="has-text-light" id="current-time">
+  <span class="time-unit" id="hours">00</span>:<span class="time-unit" id="minutes">00</span>:<span class="time-unit" id="seconds">00</span>
+</p>
 <div class="field">
-<p id="current-time">00:00 - 00 00 0000</p>
 <div class="control select">
 <div class="select">
 <select id="day-select" onchange="onDayChange()">
@@ -106,7 +92,7 @@ html {
 </section>
 <audio id="bell-sound" src="assets/bell.mp3"></audio>
 <script>
-function getSchedule(day) {
+  function getSchedule(day) {
   switch(day) {
   case 'senin':
   return [
@@ -190,12 +176,30 @@ function getSchedule(day) {
   return [];
   }
   }
-
 function updateCurrentTime() {
   const now = new Date();
-  const formattedTime = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-  const formattedDate = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
-  document.getElementById('current-time').textContent = `${formattedTime} - ${formattedDate}`;
+  const hours = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).split(':')[0];
+  const minutes = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).split(':')[1];
+  const seconds = now.toLocaleTimeString('id-ID', { second: '2-digit' }).split(':')[2];
+
+  updateUnit('hours', hours);
+  updateUnit('minutes', minutes);
+  updateUnit('seconds', seconds);
+
+  const formattedDate = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
+  document.getElementById('current-date').textContent = `${formattedDate}`;
+}
+
+function updateUnit(unitId, newValue) {
+  const unitElement = document.getElementById(unitId);
+  if (unitElement.textContent !== newValue) {
+    unitElement.textContent = newValue;
+    unitElement.style.animation = 'none';  // Reset animation
+    setTimeout(() => {
+      unitElement.style.animation = '';  // Reapply animation
+      unitElement.style.animation = 'scrollUp 0.5s ease-in-out';
+    }, 10);
+  }
 }
 
 function autoUpdateSchedule() {
@@ -214,7 +218,7 @@ function autoUpdateSchedule() {
         scheduleHtml += `<li>${item.start} - ${item.end}: ${item.subject}</li>`;
       }
     } else if (item.end < timeString) {
-      scheduleHtml += `<li>${item.start} - ${item.end}: ${item.subject} <span class="icon-text has-text-success">
+      scheduleHtml += `<li>${item.subject} <span class="icon-text has-text-success">
   <span class="icon">
     <i class="fas fa-check-square"></i>
   </span>
